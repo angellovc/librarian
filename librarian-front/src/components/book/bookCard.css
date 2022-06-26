@@ -1,0 +1,16 @@
+.c-content img {
+    width: 100%;
+    filter: blur(0.05rem);
+    /* opacity: 0.8; */
+    /* height: 25rem; */
+}
+
+.c-content {
+    /* max-width: 20rem; */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 25rem;
+    overflow: hidden;
+    background-color: black ;
+}

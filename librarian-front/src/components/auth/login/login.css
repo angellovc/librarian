@@ -1,0 +1,8 @@
+.link {
+    text-decoration: inherit; 
+    color: #4db6ac;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

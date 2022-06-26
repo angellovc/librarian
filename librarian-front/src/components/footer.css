@@ -1,0 +1,19 @@
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+
+footer .navigation-bar {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between ;
+}
+
+footer *  {
+    color: #0000005d !important;
+}
+

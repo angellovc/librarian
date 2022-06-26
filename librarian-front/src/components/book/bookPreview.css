@@ -1,0 +1,9 @@
+.book-preview-frame {
+    max-height: 50rem;
+    color: rgba(255, 255, 255, 0.541);
+    display: flex;
+    justify-content: center; 
+    position: relative; 
+    overflow: hidden;
+    background-color: black;
+}

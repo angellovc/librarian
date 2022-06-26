@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+
+.books-container {
+    min-height: 20vh;
+
+}
+
+.navbar {
+    padding-block: 1.5rem;
+    padding-inline: 1rem;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.border-bottom-round-1 {
+    border-radius: 0 0 0.3rem 0.3rem;
+}
+
+.border {
+    border: black 10px solid;
+}
+
+.m-top-2 {
+    margin-top: 2rem;
+}
+
+.m-bottom-2 {margin-bottom: 2rem;}
+
+.m-y-1 {margin-block: 1rem;}
+.m-y-2 {margin-block: 2rem;}
+.m-y-3 {margin-block: 3rem;}
+
+.m-auto {
+    margin: auto;
+}
+
+.p-x-1 {padding-inline: 1rem;}
+.p-x-2 {padding-inline: 2rem;}
+.p-x-3 {padding-inline: 3rem;}
+
+.p-y-1 {padding-block: 1rem;}
+.p-y-2 {padding-block: 2rem;}
+.p-y-3 {padding-block: 3rem;}
+
+.p-2 {
+    padding: 2rem;
+}
+
+.p-1 {
+    padding: 1rem;
+}
+
+.d-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.no-wrap {
+    flex-wrap: nowrap;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.a-center {
+    align-items: center;
+}
+
+.j-between {
+    justify-content: space-around;
+}
+
+
+.w-25 {
+    width: 25%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
