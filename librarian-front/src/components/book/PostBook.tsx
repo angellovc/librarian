@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { uploadBookMiddleware } from "../../actions/bookActions";
-import { finishLoadingAction, startLoadingAction } from "../../actions/uiActions";
 import useForm from "../../hooks/useForm";
 import InputImage from "../Form/InputImage";
 import BookCard from "./BookCard";
@@ -28,9 +27,7 @@ const PostBook = () => {
     const navigate = useNavigate();
 
     const postBookHandler = async () => {
-        dispatch(startLoadingAction());
         dispatch(uploadBookMiddleware(pictureFile, {author, title, currentPage, status, description}));
-        dispatch(finishLoadingAction());
         navigate('/')
 
     }

@@ -6,7 +6,8 @@ import { createPostMiddleware } from "../../actions/postActions";
 import { Book } from "../../types/bookTypes";
 
 const PostInput = () => {
-    const activeBook:Book = useSelector((state:any) => state?.book?.active); 
+    const activeBook:Book = useSelector((state:any) => state?.book?.active);
+    const {loading} = useSelector((state:any) => state?.ui);
     const [isDisable, setIsDisable] = useState(true);
     const [comment, setComment] = useState("");
     const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const PostInput = () => {
                 <Textarea onChange={commentHandler} value={comment} placeholder="Leave a Comment" label="Comment" id="new-comment" data-length={300} s={12}/>
             </Col>
             <Col s={5}>
-                <Button onClick={createPostHandler} disabled={isDisable} icon={<Icon right>send</Icon>}>Publish</Button>
+                <Button onClick={createPostHandler} disabled={isDisable||loading} icon={<Icon right>send</Icon>}>Publish</Button>
             </Col>
         </Row>
     );

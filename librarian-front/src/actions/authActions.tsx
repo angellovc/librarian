@@ -40,12 +40,14 @@ const logoutMiddleware = ():any => {
 
 const loginMiddleware = (email:string, password:string):any => {
     return async (dispatch:any) => {
+        dispatch(startLoadingAction());
         const authSession:AuthSession = await loginRequest(email, password);
         if (authSession !== null) {
             localStorage.setItem('token', authSession.token);
             localStorage.setItem('token-init-date', new Date().getTime().toString());
             dispatch(loginAction(authSession))
         }
+        dispatch(finishLoadingAction());
     }
 }
 

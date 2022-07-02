@@ -80,6 +80,7 @@ const loadBooksMiddleware = ():any => {
 
 const uploadBookMiddleware = (pictureFile:File|undefined, body:any):any => {
     return async (dispatch:any) => {
+        dispatch(startLoadingAction());
         const url = process.env.REACT_APP_BACKEND+"/books";
         const token = localStorage.getItem(TokenTypes.token);
         const headers = {authorization : `Bearer ${token}`};
@@ -89,12 +90,14 @@ const uploadBookMiddleware = (pictureFile:File|undefined, body:any):any => {
         body.picture = img?.filepath
         const response:HttpResponse = await httpRequest(url, 'POST', body, headers);
         onSuccess(response, () => dispatch(addBook(response.body as Book)));
+        dispatch(finishLoadingAction());
     }
 }
 
 
 const updateBookMiddleware = (pictureFile:File|undefined, book:Book):any => {
     return async (dispatch:any) => {
+        dispatch(startLoadingAction());
         const url = process.env.REACT_APP_BACKEND+"/books/"+book.id;
         const authorization = "Bearer "+localStorage.getItem(TokenTypes.token);
         if (pictureFile !== undefined) {
@@ -105,10 +108,11 @@ const updateBookMiddleware = (pictureFile:File|undefined, book:Book):any => {
         }
         const data:any = {...book};
         delete data.id;
+        delete data.creationDate;
         const response:HttpResponse = await httpRequest(url, 'PUT', data, {authorization});
         onSuccess(response, () => dispatch(updateBook(response.body)));
         onSuccess(response, () => dispatch(setBookActive(response.body)));
-        
+        dispatch(finishLoadingAction());
     }
 }
 

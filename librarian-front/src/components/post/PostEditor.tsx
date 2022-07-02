@@ -9,7 +9,7 @@ import { Post } from "../../types/postTypes";
 import { useEffect, useState } from "react";
 
 const PostEditor = ({post}:{post:Post}) => {
-
+    const {loading} = useSelector((state:any) => state?.ui);
     const activeBook = useSelector((state:any) => state?.book.active);
     const user:User = post.user;
     const dispatch = useDispatch();
@@ -54,7 +54,7 @@ const PostEditor = ({post}:{post:Post}) => {
                     <Textarea s={12} id="comment" data-length={300} label="Comment" placeholder="Leave a comment" value={comment} onChange={commentHandler}/>
                     <div className="d-flex j-between w-100">
                         <Button onClick={postDiscardHandler} className="red lighten-2" icon={<Icon right>cancel</Icon>}>Discard</Button>
-                        <Button disabled={isDisable} onClick={postSaveHandler} icon={<Icon right>send</Icon>}>Save</Button>
+                        <Button disabled={isDisable||loading} onClick={postSaveHandler} icon={<Icon right>send</Icon>}>Save</Button>
                     </div>
                 </Col>
             </Row>

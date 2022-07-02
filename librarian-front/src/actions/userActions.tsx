@@ -5,6 +5,7 @@ import {TokenTypes} from "../types/generalTypes";
 import { AuthSession } from "../types/authTypes";
 import { onSuccess } from "./baseActions";
 import { User } from "../types/userTypes";
+import { finishLoadingAction, startLoadingAction } from "./uiActions";
 
 interface CreateUserResponse extends HttpResponse{
     body: {
@@ -21,15 +22,17 @@ interface UserResponse extends HttpResponse{
 
 const createUserMiddleware = (name:string, description:string, email:string, password:string, pictureFile:any):any => {
     return async (dispatch:any) => {
-    const url = process.env.REACT_APP_BACKEND+"/users";
+        dispatch(startLoadingAction());
+        const url = process.env.REACT_APP_BACKEND+"/users";
         const img:any = await postImageRequest(pictureFile);
         const response:CreateUserResponse = await httpRequest(url, 'POST', {name, description, email, password, picture: img.filepath});
         onSuccess(response, () => {
             const authSession:AuthSession = {...response.body.user, token: response.body.token};
             localStorage.setItem('token', authSession.token);
             localStorage.setItem('token-init-date', new Date().getTime().toString());
-            dispatch(loginAction(authSession))
+            dispatch(loginAction(authSession));
         })
+        dispatch(finishLoadingAction());
     }
 }
 

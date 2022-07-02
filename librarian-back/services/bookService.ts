@@ -79,7 +79,6 @@ class BookService {
             book.status = status;
         if (keys.includes('currentPage'))
             book.currentPage = Number(currentPage);
-
         const updatedBook = await this.bookRepository.save(book);
         return updatedBook;
     }

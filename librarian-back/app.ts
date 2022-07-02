@@ -16,6 +16,7 @@ import Mailer from "./utils/mails/mailer";
 import Friend from "./models/friend";
 import cors from 'cors';
 
+
 const swaggerOptions = {
     definition: {
         openapi: "3.0.1",
@@ -44,6 +45,7 @@ createConnection({
     const {default: auth} = await import('./utils/auth/auth'); 
     const app = express();
 
+
     app.use(cors({
         origin: "*"
     }));
@@ -67,7 +69,7 @@ createConnection({
     app.use(errorHandler);
 
 
-    app.listen(PORT, () => {
+    app.listen(PORT ,() => {
         console.log(`Server running at port: ${PORT}`);
     });
 }).catch(console.log);

@@ -2,6 +2,7 @@ import {TokenTypes} from "../types/generalTypes";
 import { Post, PostAction, postActions } from "../types/postTypes";
 import { httpRequest, HttpResponse } from "../utils/requests/httpRequest";
 import { onSuccess } from "./baseActions";
+import { startLoadingAction } from "./uiActions";
 
 
 const loadPosts = (posts:Post[]):PostAction => {
@@ -90,12 +91,14 @@ const deletePostsMiddleware = (bookId:string, postId:string|undefined):any => {
 
 const updatePostMiddleware = (bookId:string, post:Post):any => {
     return async (dispatch:any) => {
+        dispatch(startLoadingAction());
         const URL = `${process.env.REACT_APP_BACKEND}/books/${bookId}/posts/${post.id}`;
         const authorization = `Bearer ${localStorage.getItem(TokenTypes.token)}`;
         const response:HttpResponse = await httpRequest(URL, 'PUT', post, {authorization});
         onSuccess(response, () => {
             dispatch(updatePost(response.body))
         });
+        dispatch(startLoadingAction());
     }
 }
 

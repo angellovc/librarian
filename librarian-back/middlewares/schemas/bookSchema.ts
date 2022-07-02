@@ -24,7 +24,7 @@ const updateBookSchema = Joi.object({
     author: author.required(),
     status: status.required(),
     currentPage: currentPage.required(),
-    description: description.required(),
+    description: description.allow(""),
 });
 
 const patchBookSchema = Joi.object({
