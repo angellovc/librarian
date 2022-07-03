@@ -2,7 +2,7 @@ import "reflect-metadata" ;
 import {createConnection} from 'typeorm';
 import express from 'express';
 
-import {DATABASE_NAME, DATABASE_USER, DATABASE_USER_PASSWORD, PORT, EMAIL, EMAIL_SECRET} from './data/config';
+import {DATABASE_NAME, DATABASE_USER, DATABASE_USER_PASSWORD, PORT, EMAIL, EMAIL_SECRET, HOST} from './data/config';
 import User from "./models/user";
 
 import { boomErrorHandler, errorHandler, ormErrorHandler } from "./middlewares/errorHandlers";
@@ -47,8 +47,11 @@ createConnection({
 
 
     app.use(cors({
-        origin: "*"
-    }));
+        origin: HOST,
+        methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+	}));
+
+
     app.use(express.json());
 
     /* Swagger */

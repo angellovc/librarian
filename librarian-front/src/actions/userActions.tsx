@@ -44,7 +44,7 @@ const updateUserMiddleware = ({name, description, pictureFile, oldPicture}:{name
         const token = localStorage.getItem(TokenTypes.token);
         let img;
         if (pictureFile !== undefined) {
-            const url = process.env.REACT_APP_BACKEND+'/assets/images/'+oldPicture.split('/')[2];
+            const url = process.env.REACT_APP_BACKEND+'/assets/images/'+oldPicture?.split('/')[2];
             oldPicture && await httpRequest(url, 'DELETE', undefined, {authorization: `Bearer ${token}`});
             img = await postImageRequest(pictureFile);
         }

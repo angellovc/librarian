@@ -11,7 +11,8 @@ const {
     JWT_RECOVERY_SECRET,
     EMAIL,
     EMAIL_SECRET,
-    FRONTEND_APP
+    FRONTEND_APP,
+    HOST
 } = process.env;
 
 
@@ -24,5 +25,6 @@ export {
     JWT_RECOVERY_SECRET,
     EMAIL,
     EMAIL_SECRET,
-    FRONTEND_APP
+    FRONTEND_APP,
+    HOST
 };
