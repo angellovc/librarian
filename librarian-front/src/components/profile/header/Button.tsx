@@ -8,7 +8,7 @@ interface ButtonParameters {
     disable?:boolean
 }
 
-const ButtonCustom = ({className, icon, innertText, onClick, disable = false}:ButtonParameters) => {
+const ButtonCustom = ({className, icon = "", innertText, onClick, disable = false}:ButtonParameters) => {
 
     return (
         <Button

@@ -39,12 +39,13 @@ const createUserMiddleware = (name:string, description:string, email:string, pas
 
 const updateUserMiddleware = ({name, description, pictureFile, oldPicture}:{name:string, description:string, pictureFile:File|undefined, oldPicture:string}):any => {
     return async (dispatch:any) => {
+        dispatch(startLoadingAction());
         const url = process.env.REACT_APP_BACKEND+'/users';
         const token = localStorage.getItem(TokenTypes.token);
         let img;
         if (pictureFile !== undefined) {
             const url = process.env.REACT_APP_BACKEND+'/assets/images/'+oldPicture.split('/')[2];
-            await httpRequest(url, 'DELETE');
+            oldPicture && await httpRequest(url, 'DELETE', undefined, {authorization: `Bearer ${token}`});
             img = await postImageRequest(pictureFile);
         }
         const response:UserResponse = await httpRequest(url, 'PATCH', 
@@ -52,6 +53,7 @@ const updateUserMiddleware = ({name, description, pictureFile, oldPicture}:{name
             {authorization: `Bearer ${token}`}
         );
         const authSession:AuthSession = {...response.body.user, token: token as string} ;
+        dispatch(finishLoadingAction());
         onSuccess(response, () => dispatch(loginAction(authSession)))
     }
 }

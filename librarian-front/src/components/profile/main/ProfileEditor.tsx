@@ -6,7 +6,6 @@ import ButtonCustom from "../header/Button";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { updateUserMiddleware } from "../../../actions/userActions";
-import { finishLoadingAction, startLoadingAction } from "../../../actions/uiActions";
 import { useSelector } from "react-redux";
 
 const ProfileEditor = ({name, description, email, picture}:{name:string, description:string, email:string, picture:string}) => {
@@ -28,9 +27,7 @@ const ProfileEditor = ({name, description, email, picture}:{name:string, descrip
         setPictureFile(undefined);
     }
     const saveProfileChanges = () => {
-        dispath(startLoadingAction());
         dispath(updateUserMiddleware({name:newName, description:newDescription, pictureFile:pictureFile, oldPicture:picture}));
-        dispath(finishLoadingAction());
         navigate('/');
     }
     const discardProfileChanges = () => navigate('/')

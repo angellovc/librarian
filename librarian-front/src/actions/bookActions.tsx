@@ -102,9 +102,9 @@ const updateBookMiddleware = (pictureFile:File|undefined, book:Book):any => {
         const authorization = "Bearer "+localStorage.getItem(TokenTypes.token);
         if (pictureFile !== undefined) {
             const pictureUrl = process.env.REACT_APP_BACKEND+"/"+book.picture;
-            await httpRequest(pictureUrl, 'DELETE', undefined, {authorization}); 
+            !pictureUrl.includes('static') && await httpRequest(pictureUrl, 'DELETE', undefined, {authorization}); 
             const img = await imageUpload(pictureFile);
-            book.picture = img.path;
+            book.picture = img.filepath;
         }
         const data:any = {...book};
         delete data.id;
