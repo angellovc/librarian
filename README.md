@@ -2,7 +2,9 @@
 
 This is a web application in which you can publush all the books you have, write a little review and update your progress.
 
-[![Librarian](https://img.shields.io/badge/%F0%9F%93%95-Librarian-brown)](https://angello.ddns.net/auth)
+Check an online version: 
+
+[![Librarian](https://img.shields.io/badge/%F0%9F%93%95-Go_To_Librarian_online-brown)](https://angello.ddns.net/auth)
 
 
 ## Overview
